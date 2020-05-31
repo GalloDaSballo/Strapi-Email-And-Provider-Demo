@@ -18,4 +18,19 @@ module.exports = {
   // '0 1 * * 1': () => {
   //
   // }
+  '* * * * * *': async () => {
+    console.log("Cron every second")
+
+
+    const send = await strapi.plugins['email'].services.email.send({
+      to: 'mvjvvknemredfsaetn@awdrt.org',
+      from: 'demo@strapi.io',
+      replyTo: 'demo@strapi.io',
+      subject: 'Sent from a cron',
+      text: 'Hello world!',
+      html: 'Hello world!',
+    });
+
+    console.log("send", send)
+  }
 };
